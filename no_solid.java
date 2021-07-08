@@ -53,34 +53,33 @@ class Shapes {
 }
 
 // ========== LISKOV SUBSTITUTION PRINCIPLE ==========
-class Shape {
-    int length;
-    int breadth;
+public class Employed {
 
-    void setlength(int lengthval) {
-        length = lengthval;
+    public void work() {
+
+        System.out.println("The Employee is working");
     }
 
-    void setbreadth(int breadthval) {
-        breadth = breadthval;
-    }
+}
 
-    public void extract_Area() {
-        int area = length * breadth;
-        System.out.println("THE AREA OF SHAPE IS -> " + area);
+public class EmployeeOnVacation extends Employed {
+
+    public void work() {
+        throw new IllegalArgumentException("Employees on vacation should not work");
     }
 }
 
-class Square extends Shape {
-    void setlength(int length_value) {
-        length = length_value;
-        breadth = length_value;
-    }
+public class Project {
 
-    void setbreadth(int breadth_value) {
-        breadth = breadth_value;
-        length = breadth_value;
+    public void start(List<Employee> employees) {
+
+        for (Employee employee : employees) {
+            employee.work();                        // Will Throw an Exception while calling second object.
+        }
     }
+}
+
+
 }
 
 // ======== DEPENDENCY INVERSION PRINCIPLE ==========
