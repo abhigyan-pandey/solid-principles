@@ -66,31 +66,41 @@ class BMW extends Car {
 }
 
 // ========== LISKOV SUBSTITUTION PRINCIPLE ==========
-interface Shaped {
 
-    public void extract_Area();
-}
+public class Employee {
 
-class Squared implements Shaped {
-    int length;
-    int breadth;
-
-    void setlength(int length_value) {
-        length = length_value;
-        breadth = length_value;
-    }
-
-    void setbreadth(int breadth_value) {
-        breadth = breadth_value;
-        length = breadth_value;
-    }
-
-    public void extract_Area() {
-        int area = length * breadth;
-        System.out.println("AREA IS " + area);
+    public String getTitle() {
+        return "The employee's title";
     }
 }
 
+public interface WorkingEmployee {
+
+    public void work();
+}
+
+public interface NonWorkingEmployee {
+
+    void relax();
+}
+
+public class WorkingEmployeeImpl extends Employee implements WorkingEmployee {
+
+    public void work() {
+        System.out.println("THE PERSON WILL BE WORKING HERE ");
+
+    }
+}
+
+public class Project {
+
+    public void start(List<WorkingEmployee> workingEmployees) {
+
+        for (WorkingEmployee workingEmployee : workingEmployees) {
+            workingEmployee.work();
+        }
+    }
+}
 
 // ========== Dependency Inversion Principle ===========
 
