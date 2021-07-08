@@ -1,5 +1,7 @@
 import java.util.List;
 
+import java.util.ArrayList;
+
 //                      ========    INTERFACE SEGGREGATION  ========
 interface Vehicle {
 
@@ -66,25 +68,24 @@ class BMW extends Car {
 }
 
 // ========== LISKOV SUBSTITUTION PRINCIPLE ==========
-
-public class Employee {
+class Employee {
 
     public String getTitle() {
         return "The employee's title";
     }
 }
 
-public interface WorkingEmployee {
+interface WorkingEmployee {
 
     public void work();
 }
 
-public interface NonWorkingEmployee {
+interface NonWorkingEmployee {
 
     void relax();
 }
 
-public class WorkingEmployeeImpl extends Employee implements WorkingEmployee {
+class WorkingEmployeeImpl extends Employee implements WorkingEmployee {
 
     public void work() {
         System.out.println("THE PERSON WILL BE WORKING HERE ");
@@ -92,13 +93,24 @@ public class WorkingEmployeeImpl extends Employee implements WorkingEmployee {
     }
 }
 
-public class Project {
+class Project {
 
-    public void start(List<WorkingEmployee> workingEmployees) {
+    public void start(ArrayList<WorkingEmployee> workingEmployees) {
 
         for (WorkingEmployee workingEmployee : workingEmployees) {
             workingEmployee.work();
         }
+    }
+}
+
+class solid {
+
+    public static void main(String[] args) {
+        ArrayList<WorkingEmployee> employees = new ArrayList<WorkingEmployee>();
+        employees.add(new WorkingEmployeeImpl());
+        Project project = new Project();
+        project.start(employees);
+
     }
 }
 
