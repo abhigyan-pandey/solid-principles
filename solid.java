@@ -65,6 +65,33 @@ class BMW extends Car {
     }
 }
 
+// ========== LISKOV SUBSTITUTION PRINCIPLE ==========
+interface Shaped {
+
+    public void extract_Area();
+}
+
+class Squared implements Shaped {
+    int length;
+    int breadth;
+
+    void setlength(int length_value) {
+        length = length_value;
+        breadth = length_value;
+    }
+
+    void setbreadth(int breadth_value) {
+        breadth = breadth_value;
+        length = breadth_value;
+    }
+
+    public void extract_Area() {
+        int area = length * breadth;
+        System.out.println("AREA IS " + area);
+    }
+}
+
+
 // ========== Dependency Inversion Principle ===========
 
 interface Developer {
